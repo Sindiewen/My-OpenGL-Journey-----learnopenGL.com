@@ -24,6 +24,7 @@
     <ClInclude Include="src\headers\sfDataTypes\Vector3.h" />
     <ClInclude Include="src\headers\sfglMain.h" />
     <ClInclude Include="src\headers\sfglRenderer.h" />
+    <ClInclude Include="src\headers\sfglShaderRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
