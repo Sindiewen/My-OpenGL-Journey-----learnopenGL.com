@@ -18,6 +18,8 @@ sfglRenderer::sfglRenderer()
 void sfglRenderer::initiateRenderer()
 {
 	// TODO: Add shader stuff here
+	shader.compileShaders();
+	shader.createShaderProgram(shaderProgram);
 
 	// Updates the renderer
 	glUpdate();
@@ -40,6 +42,7 @@ void sfglRenderer::setWindow(GLFWwindow* newwindow)
 ////////////////////////
 void sfglRenderer::glUpdate()
 {
+	/*
 	//////
 	// Compile vertex shader
 	//////
@@ -83,6 +86,8 @@ void sfglRenderer::glUpdate()
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
+	*/
+
 
 
 	// Initialization(done once unless object changes)
@@ -123,7 +128,7 @@ void sfglRenderer::glUpdate()
 
 
 		// Renders to the viewport
-		glClearColor(0.6f, 0.1f, 0.4f, 1.0f);
+		glClearColor(0.3f, 0.1f, 0.4f, 1.0f);
 		// Clears the buffer readying for the next frame
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -147,51 +152,7 @@ void sfglRenderer::glUpdate()
 }
 
 
-// Checks if the shader compilation was successful
-void sfglRenderer::shaderCompileSuccessCheckVertex()
-{
-	int success;
-	char infoLog[512];
 
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-	// IF not successfull, print out compilation fail and the info log
-	if (!success)
-	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\N" << infoLog << std::endl;
-	}
-}
-
-void sfglRenderer::shaderCompileSuccessCheckFragment()
-{
-	int success;
-	char infoLog[512];
-
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-
-	// IF not successfull, print out compilation fail and the info log
-	if (!success)
-	{
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\N" << infoLog << std::endl;
-	}
-}
-
-void sfglRenderer::shaderLinkingSuccessCheck()
-{
-	int success;
-	char infoLog[512];
-
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-
-	// IF not successfull, print out compilation fail and the info log
-	if (!success)
-	{
-		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::LINKING::SHADER_LINKING_FAILED\N" << infoLog << std::endl;
-	}
-}
 
 void sfglRenderer::processInput()
 {
@@ -201,4 +162,3 @@ void sfglRenderer::processInput()
 		glfwSetWindowShouldClose(window, true);
 	}
 }
-

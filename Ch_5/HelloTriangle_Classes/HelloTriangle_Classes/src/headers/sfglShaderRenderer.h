@@ -2,14 +2,34 @@
 #ifndef SFGLSHADERRENDERER_H
 #define SFGLSHADERRENDERER_H
 
-class shaderRenderer
-{
-private:
-	unsigned int vertexShader;		// id reference to the created vertex shader
-	unsigned int fragmentShader;	// id reference to the created fragment shader
-	unsigned int shaderProgram;		// id reference to the shader program
+// Preprocessor directives
+#include "glPreprocessors.h"
 
-	const char* vertexShaderSource;
+class sfglShaderRenderer
+{
+public:
+	// Class Constructor
+	sfglShaderRenderer();
+
+	// Class Functions
+	void compileShaders();
+	void createShaderProgram(int &shaderProgram);
+
+	
+
+private:
+	unsigned int vertexShader;			// id reference to the created vertex shader
+	unsigned int fragmentShader;		// id reference to the created fragment shader
+
+	// Shader source 
+	const char* vertexShaderSource;		// Stores the source code for the vertex shader
+	const char* fragmentShaderSource;	// Stores the source code for the fragment shader
+
+
+	// Private class functions
+	void shaderCompileSuccessCheckVertex();
+	void shaderCompileSuccessCheckFragment();
+	void shaderLinkingSuccessCheck(int &shaderProgram);
 };
 
 

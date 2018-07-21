@@ -4,6 +4,7 @@
 
 // Preprocessor directives
 #include "glPreprocessors.h"
+#include "sfglShaderRenderer.h"
 
 class sfglRenderer
 {
@@ -29,6 +30,7 @@ private:
 	//////////////////////
 
 	GLFWwindow* window; // reference to the window in the main sfgl class
+	sfglShaderRenderer shader;
 
 	unsigned int VBO;	// Initializes the variable to store the current buffer
 	unsigned int VAO;	// Initializes the Vertex array object
@@ -42,10 +44,10 @@ private:
 	};
 
 	// Shader variables
-	unsigned int vertexShader;	// Creates vertex shader object referenced by an id
-	unsigned int fragmentShader;// Creates fragment shader object
+	//unsigned int vertexShader;	// Creates vertex shader object referenced by an id
+	//unsigned int fragmentShader;// Creates fragment shader object
 	int shaderProgram;	// creates shader program object
-
+	/*
 	// shader sources
 	// Use const char to store shader source
 	const char *vertexShaderSource = "#version 330 core\n"
@@ -60,18 +62,14 @@ private:
 		"{\n"
 			"FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 		"}";
+	*/
 
 
 	// Private functions
 
 	// Updates the gl renderer
 	void glUpdate();
-
-	//void compileShader(GLchar vertexShaderSource, GLchar fragmentShaderSource);
-	void shaderCompileSuccessCheckVertex();
-	void shaderCompileSuccessCheckFragment();
-	void shaderLinkingSuccessCheck();
-
+	
 	// glfw Input Checks
 	void processInput();	
 
