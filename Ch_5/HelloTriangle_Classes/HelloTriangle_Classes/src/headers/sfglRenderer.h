@@ -9,11 +9,12 @@
 class sfglRenderer
 {
 public:
+	// ----------------------------------------
 	// Class constructors
 	sfglRenderer();
 
 
-	/////////////////////
+	// ---------------------------------------
 	// public functions
 	/////////////////////
 
@@ -25,12 +26,12 @@ public:
 
 
 private:
-	//////////////////////
+	// -------------------------------------------
 	// Private variables
-	//////////////////////
+	
 
 	GLFWwindow* window; // reference to the window in the main sfgl class
-	sfglShaderRenderer shader;
+	sfglShaderRenderer shader;	// Reference to the shader class
 
 	unsigned int VBO;	// Initializes the variable to store the current buffer
 	unsigned int VAO;	// Initializes the Vertex array object
@@ -43,11 +44,12 @@ private:
 		0.0f, 0.5f, 0.0f,	// top
 	};
 
+	/////////////////////
 	// Shader variables
-	//unsigned int vertexShader;	// Creates vertex shader object referenced by an id
-	//unsigned int fragmentShader;// Creates fragment shader object
+	/////////////////////
 	int shaderProgram;	// creates shader program object
-	/*
+	
+
 	// shader sources
 	// Use const char to store shader source
 	const char *vertexShaderSource = "#version 330 core\n"
@@ -62,16 +64,17 @@ private:
 		"{\n"
 			"FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 		"}";
-	*/
+	
 
-
+	// -------------------------------------------
 	// Private functions
 
-	// Updates the gl renderer
-	void glUpdate();
-	
-	// glfw Input Checks
-	void processInput();	
+	/////////////////////
+	// Main GL Renderer
+	/////////////////////
+
+	void glUpdate(); 		// Updates the gl renderer
+	void processInput();	// glfw Input Checks	
 
 
 };

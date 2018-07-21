@@ -1,11 +1,12 @@
 #include "headers\sfglShaderRenderer.h"
 
+// ------------------------------------
 // Default constructor
 sfglShaderRenderer::sfglShaderRenderer()
 {
 	// default constructor
 	// Sets the source code for the shaders
-	
+	/*
 	vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"void main()\n"
@@ -19,10 +20,19 @@ sfglShaderRenderer::sfglShaderRenderer()
 		"{\n"
 		"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 		"}";
+		*/
 		
 }
 
+// ----------------------------------------------
 // Start the shader renderer
+// Assigns the shader source code
+void sfglShaderRenderer::assignShaderSource(const char* vertexSource, const char* fragmentSource)
+{
+	vertexShaderSource = vertexSource;
+	fragmentShaderSource = fragmentSource;
+}
+
 // Compiles the shader renderer
 void sfglShaderRenderer::compileShaders()
 {
@@ -41,9 +51,11 @@ void sfglShaderRenderer::compileShaders()
 	
 }
 
+// Creates the shader program
 void sfglShaderRenderer::createShaderProgram(int &shaderProgram)
 {
 	// Attach shaders to the shader program
+	shaderProgram = glCreateProgram();
 	glAttachShader(shaderProgram, vertexShader);		// Attaches vertex shader to the shader program
 	glAttachShader(shaderProgram, fragmentShader);		// Attaches fragment shader to the shader program
 	glLinkProgram(shaderProgram);						// Links the shaders to the program
@@ -55,11 +67,11 @@ void sfglShaderRenderer::createShaderProgram(int &shaderProgram)
 }
 
 
-//////////////////////////
+// --------------------------------------
 // Shader Error Checking
 //////////////////////////
 
-// Checks if the shader compilation was successful
+// Checks if the shader compilation was successful - Vertex shaders
 void sfglShaderRenderer::shaderCompileSuccessCheckVertex()
 {
 	int success;
@@ -75,6 +87,7 @@ void sfglShaderRenderer::shaderCompileSuccessCheckVertex()
 	}
 }
 
+// Checks if the shader compilation was successful - Fragment shaders
 void sfglShaderRenderer::shaderCompileSuccessCheckFragment()
 {
 	int success;
@@ -90,6 +103,7 @@ void sfglShaderRenderer::shaderCompileSuccessCheckFragment()
 	}
 }
 
+// Checks if the shader linking was successful
 void sfglShaderRenderer::shaderLinkingSuccessCheck(int &shaderProgram)
 {
 	int success;
