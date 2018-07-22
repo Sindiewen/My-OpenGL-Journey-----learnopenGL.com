@@ -35,13 +35,44 @@ private:
 
 	unsigned int VBO;	// Initializes the variable to store the current buffer
 	unsigned int VAO;	// Initializes the Vertex array object
+	unsigned int EBO;	// Initializes the element buffer object
 
 
 	// Vertices variables
-	float vertices[9] = {
+
+	// drawing triangles
+	float oneTrivertices[9] = // Triangle
+	{
 		-0.5f, -0.5f, 0.0f, // left
 		0.5f, -0.5f, 0.0f,	// right
 		0.0f, 0.5f, 0.0f,	// top
+	};
+
+	float twoTriRectVert[18] =
+	{
+		// First triangle
+		0.5f, 0.5f, 0.0f,	// top right
+		0.5f, -0.5f, 0.0f,	// bottom right
+		-0.5f, 0.5f, 0.0f,	// top left
+		// 2nd triangle
+		0.5f, -0.5f, 0.0f,	// bottom right
+		0.5f, -0.5f, 0.0f, // bottom left
+		-0.5f, 0.5f, 0.0f	// top left
+	};
+
+	// Drawing rect
+	float vertices [12] =
+	{
+		0.5f, 0.5f, 0.0f,	// top right
+		0.5f, -0.5f, 0.0f,	// bottom right
+		-0.5f, -0.5f, 0.0f, // bottom left
+		-0.5f, 0.5f, 0.0f	// top left
+	};
+
+	unsigned int indices[6] =	// We start from 0
+	{
+		0, 1, 2,	// First triangle
+		2, 1, 3 	// Second triangle
 	};
 
 	/////////////////////
@@ -68,6 +99,13 @@ private:
 
 	// -------------------------------------------
 	// Private functions
+
+	// Render shapes
+	void setupTriangleSingleRender();
+	void setupRectRenderer();
+
+	void renderTriangleSingle();
+	void renderRectSingle();
 
 	/////////////////////
 	// Main GL Renderer
