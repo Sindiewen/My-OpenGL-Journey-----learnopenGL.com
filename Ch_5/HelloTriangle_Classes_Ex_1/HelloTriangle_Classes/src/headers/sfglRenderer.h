@@ -28,7 +28,7 @@ public:
 private:
 	// -------------------------------------------
 	// Private variables
-
+	
 
 	GLFWwindow* window; // reference to the window in the main sfgl class
 	sfglShaderRenderer shader;	// Reference to the shader class
@@ -50,7 +50,7 @@ private:
 
 	float twoTriRectVert[18] =
 	{
-
+		
 		// First triangle
 		0.5f, 0.5f, 0.0f,	// top right
 		0.5f, -0.5f, 0.0f,	// bottom right
@@ -68,24 +68,6 @@ private:
 		-0.0f, -0.5f, 0.0f, // right
 		-0.45f, 0.5f, 0.0f, // top
 		// second triangle
-		0.0f, -0.5f, 0.0f, // left
-		0.9f, -0.5f, 0.0f, // right
-		0.45f, 0.5f, 0.0f, // top
-	};
-
-	// First triangle
-	float triOneVerts[9] =
-	{
-		
-		-0.9f, -0.5f, 0.0f, // left
-		-0.0f, -0.5f, 0.0f, // right
-		-0.45f, 0.5f, 0.0f, // top
-	};
-
-	// second triangle
-	float triTwoVerts[9] =
-	{
-		
 		0.0f, -0.5f, 0.0f, // left
 		0.9f, -0.5f, 0.0f, // right
 		0.45f, 0.5f, 0.0f, // top
@@ -133,12 +115,10 @@ private:
 
 	// Render shapes
 	void setupTriangleRender();
-	void setupTwoSeparateTrianglesToRender();
 	void setupRectRenderer();
 
 	void renderTriangleSingle();
 	void renderTriangleDouble();
-	void renderTwoSeparateTriangles();
 	void renderRectSingle();
 
 	/////////////////////

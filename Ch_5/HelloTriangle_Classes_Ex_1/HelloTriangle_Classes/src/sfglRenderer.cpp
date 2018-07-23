@@ -38,8 +38,6 @@ void sfglRenderer::setWindow(GLFWwindow* newwindow)
 
 // ----------------------------------------------------
 // render shapes
-
-// Setup Rendering
 void sfglRenderer::setupTriangleRender()
 {
 	// ---------------------------------------------------
@@ -69,11 +67,6 @@ void sfglRenderer::setupTriangleRender()
 	glBindVertexArray(0);
 }
 
-void sfglRenderer::setupTwoSeparateTrianglesToRender()
-{
-
-}
-
 void sfglRenderer::setupRectRenderer()
 {
 	// ----------------------------------------------
@@ -94,10 +87,6 @@ void sfglRenderer::setupRectRenderer()
 
 }
 
-
-
-
-// Render specified Shapes
 void sfglRenderer::renderTriangleSingle()
 {
 	// Draws the triangle using glDrawArrays
@@ -115,11 +104,6 @@ void sfglRenderer::renderTriangleDouble()
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glBindVertexArray(0);
-}
-
-void sfglRenderer::renderTwoSeparateTriangles()
-{
-
 }
 
 void sfglRenderer::renderRectSingle()

@@ -33,50 +33,16 @@ private:
 	GLFWwindow* window; // reference to the window in the main sfgl class
 	sfglShaderRenderer shader;	// Reference to the shader class
 
-	unsigned int VBO;	// Initializes the variable to store the current buffer
-	unsigned int VAO;	// Initializes the Vertex array object
-	unsigned int EBO;	// Initializes the element buffer object
+	unsigned int VBOs[2];	// Initializes the variable to store the current buffer - array for each triangle
+	unsigned int VAOs[2];	// Initializes the Vertex array object - array for each triangle
 
 
 	// Vertices variables
 
 	// drawing triangles
-	float oneTrivertices[9] = // Triangle
-	{
-		-0.5f, -0.5f, 0.0f, // left
-		0.5f, -0.5f, 0.0f,	// right
-		0.0f, 0.5f, 0.0f,	// top
-	};
-
-	float twoTriRectVert[18] =
-	{
-
-		// First triangle
-		0.5f, 0.5f, 0.0f,	// top right
-		0.5f, -0.5f, 0.0f,	// bottom right
-		-0.5f, 0.5f, 0.0f,	// top left
-		// 2nd triangle
-		0.5f, -0.5f, 0.0f,	// bottom right
-		-0.5f, -0.5f, 0.0f, // bottom left
-		-0.5f, 0.5f, 0.0f	// top left
-	};
-
-	float twoTriSbSVerts[18] =
-	{
-		// First triangle
-		-0.9f, -0.5f, 0.0f, // left
-		-0.0f, -0.5f, 0.0f, // right
-		-0.45f, 0.5f, 0.0f, // top
-		// second triangle
-		0.0f, -0.5f, 0.0f, // left
-		0.9f, -0.5f, 0.0f, // right
-		0.45f, 0.5f, 0.0f, // top
-	};
-
 	// First triangle
 	float triOneVerts[9] =
 	{
-		
 		-0.9f, -0.5f, 0.0f, // left
 		-0.0f, -0.5f, 0.0f, // right
 		-0.45f, 0.5f, 0.0f, // top
@@ -85,25 +51,9 @@ private:
 	// second triangle
 	float triTwoVerts[9] =
 	{
-		
 		0.0f, -0.5f, 0.0f, // left
 		0.9f, -0.5f, 0.0f, // right
 		0.45f, 0.5f, 0.0f, // top
-	};
-
-	// Drawing rect
-	float rectVertices [12] =
-	{
-		0.5f, 0.5f, 0.0f,	// top right
-		0.5f, -0.5f, 0.0f,	// bottom right
-		-0.5f, -0.5f, 0.0f, // bottom left
-		-0.5f, 0.5f, 0.0f	// top left
-	};
-
-	unsigned int indices[6] =	// We start from 0
-	{
-		0, 1, 2,	// First triangle
-		2, 1, 3 	// Second triangle
 	};
 
 	/////////////////////
@@ -132,14 +82,9 @@ private:
 	// Private functions
 
 	// Render shapes
-	void setupTriangleRender();
 	void setupTwoSeparateTrianglesToRender();
-	void setupRectRenderer();
 
-	void renderTriangleSingle();
-	void renderTriangleDouble();
-	void renderTwoSeparateTriangles();
-	void renderRectSingle();
+	void renderTriangle();
 
 	/////////////////////
 	// Main GL Renderer
