@@ -145,8 +145,8 @@ void sfglRenderer::glUpdate()
 	glGenBuffers(1, &EBO);				// Generates the buffer - element buffer for indices
 	
 	// ---------------------------------------------------
-	setupTriangleRender();	// Sets up the triangle renderer
-	//setupRectRenderer();	// Sets up the rect to be rendered
+	//setupTriangleRender();	// Sets up the triangle renderer
+	setupRectRenderer();	// Sets up the rect to be rendered
 
 	 
 	while (!glfwWindowShouldClose(window))
@@ -170,8 +170,8 @@ void sfglRenderer::glUpdate()
 
 		// Draws shapes
 		//renderTriangleSingle();
-		renderTriangleDouble();
-		//renderRectSingle();
+		//renderTriangleDouble();
+		renderRectSingle();
 
 
 

@@ -99,13 +99,10 @@ void sfglRenderer::glUpdate()
 		processInput();
 
 
-
 		// Renders to the viewport
 		glClearColor(0.3f, 0.1f, 0.6f, 1.0f);
 		// Clears the buffer readying for the next frame
 		glClear(GL_COLOR_BUFFER_BIT);
-
-
 
 
 		// Draw the shapes on screen

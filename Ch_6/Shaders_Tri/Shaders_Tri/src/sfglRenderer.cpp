@@ -18,7 +18,6 @@ sfglRenderer::sfglRenderer()
 void sfglRenderer::initiateRenderer()
 {
 	// TODO: Add shader stuff here
-	shader.assignShaderSource(vertexShaderSource, fragmentShaderSource);
 	shader.compileShaders();
 	shader.createShaderProgram(shaderProgram);
 
@@ -38,6 +37,8 @@ void sfglRenderer::setWindow(GLFWwindow* newwindow)
 
 // ----------------------------------------------------
 // render shapes
+
+// Setup Rendering
 void sfglRenderer::setupTriangleRender()
 {
 	// ---------------------------------------------------
@@ -46,7 +47,7 @@ void sfglRenderer::setupTriangleRender()
 
 	// 2: copy vertices array into the buffer for OpenGL to use
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);	// Binds the buffer
-	glBufferData(GL_ARRAY_BUFFER, sizeof(twoTriSbSVerts), twoTriSbSVerts, GL_STATIC_DRAW);	// Copies previous defined vertex data into the buffer memory
+	glBufferData(GL_ARRAY_BUFFER, sizeof(oneTrivertices), oneTrivertices, GL_STATIC_DRAW);	// Copies previous defined vertex data into the buffer memory
 
 	// 3: set vertex attribute pointers
 	// Linking vertex attributes: pg41 of LeanOpenGL Book
@@ -87,6 +88,8 @@ void sfglRenderer::setupRectRenderer()
 
 }
 
+
+// Render specified Shapes
 void sfglRenderer::renderTriangleSingle()
 {
 	// Draws the triangle using glDrawArrays
@@ -120,7 +123,11 @@ void sfglRenderer::renderRectSingle()
 ////////////////////////
 void sfglRenderer::glUpdate()
 {
-	// Initialization(done once unless object changes)
+	// Initialization
+	// Get number of vertex attributes supported by this system
+	int nrAttributes;
+	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
+	std::cout << "Maximum nr of vertex attributes supported: " << nrAttributes << std::endl;
 
 
 	// Define graphics buffer
@@ -153,8 +160,8 @@ void sfglRenderer::glUpdate()
 		glBindVertexArray(VAO);
 
 		// Draws shapes
-		//renderTriangleSingle();
-		renderTriangleDouble();
+		renderTriangleSingle();
+		//renderTriangleDouble();
 		//renderRectSingle();
 
 
