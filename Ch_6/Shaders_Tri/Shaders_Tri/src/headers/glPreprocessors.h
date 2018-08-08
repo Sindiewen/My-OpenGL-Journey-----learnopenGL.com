@@ -8,6 +8,9 @@
  **/
 // C++ Preprocessors
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 // Base OpenGL Preprocessors
 #include <glad/glad.h>

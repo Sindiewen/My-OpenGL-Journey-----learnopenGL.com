@@ -18,8 +18,9 @@ sfglRenderer::sfglRenderer()
 void sfglRenderer::initiateRenderer()
 {
 	// TODO: Add shader stuff here
+	shader.assignShaderSource(vertexShaderSource, fragmentShaderSource);
 	shader.compileShaders();
-	shader.createShaderProgram(shaderProgram);
+	shader.createShaderProgram();
 
 	// Updates the renderer
 	glUpdate();
@@ -65,6 +66,35 @@ void sfglRenderer::setupTriangleRender()
 
 	// Can unbind vertex array afterward to ensure no accedental modifications of the VAO.
 	// Seems optional as this is a rare case anyway.
+	glBindVertexArray(0);
+}
+
+void sfglRenderer::setupTriangleRenderColorVertex()
+{
+	// Bind Vertex Array
+	glBindVertexArray(VAO);
+	
+	// Copies Verts into buffer
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(oneTriVertColor), oneTriVertColor, GL_STATIC_DRAW);
+
+	// Sets vertex attribute pointers
+	// Sets up triangle vertices
+	// Arg 5: Setting stride distance to be 24 (float = 4 bytes, 4*6 = 12)
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	
+	// Sets up triangle RGB values
+	// Like above, but instead we set the location from vertex shader to be 1,
+	// the size of the vertex is still 3,
+	// telling OpenGL to still use float, 
+	// no normalization
+	// Stride distance, Like above, set stride distance to be 24
+	// Sets the offset of where to begin the buffer to be 12 bytes forward from 0
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+
+	// Can unbind aferwards
 	glBindVertexArray(0);
 }
 
@@ -136,7 +166,8 @@ void sfglRenderer::glUpdate()
 	glGenBuffers(1, &EBO);				// Generates the buffer - element buffer for indices
 	
 	// ---------------------------------------------------
-	setupTriangleRender();	// Sets up the triangle renderer
+	//setupTriangleRender();	// Sets up the triangle renderer
+	setupTriangleRenderColorVertex();
 	//setupRectRenderer();	// Sets up the rect to be rendered
 
 	 
@@ -156,15 +187,13 @@ void sfglRenderer::glUpdate()
 
 
 		// Draw the shapes on screen
-		glUseProgram(shaderProgram);	// use our shader program when we want to render object
+		shader.UseShader();	// use our shader program when we want to render object
+
+		// Binds vertex array
 		glBindVertexArray(VAO);
 
 		// Draws shapes
 		renderTriangleSingle();
-		//renderTriangleDouble();
-		//renderRectSingle();
-
-
 
 
 		// Check for any call events and swap the buffers

@@ -1,22 +1,36 @@
 #pragma once
-#ifndef SFGLSHADERRENDERER_H
-#define SFGLSHADERRENDERER_H
+#ifndef SFGLSHADER_H
+#define SFGLSHADER_H
 
 // Preprocessor directives
 #include "glPreprocessors.h"
 
-class sfglShaderRenderer
+class sfglShader
 {
 public:
 	// -------------------------------------
 	// Class Constructor
-	sfglShaderRenderer();
+	sfglShader();
+	sfglShader(const char* vertexPath, const char* fragPath);
 
 	// --------------------------------------
 	// Class Functions
 	void assignShaderSource(const char* vertexSource, const char* fragmentSource);
 	void compileShaders();
-	void createShaderProgram(int &shaderProgram);
+	void createShaderProgram();
+	void UseShader();
+
+	// --------------------------------------
+	// Shader Uniform setters
+	void setBool(const std::string &name, bool value) const;
+	void setInt(const std::string &name, int value) const;
+	void setFloat(const std::string &name, int value) const;
+
+	// Defines and sets uniform
+	void definesShaderUniform();
+
+	// Public variables
+	int ShaderProgram;	// ID to the shader Program reference
 
 	
 
@@ -33,9 +47,11 @@ private:
 
 	// ----------------------------------------
 	// Private class functions
+
+	// Compiles and links shaders
 	void shaderCompileSuccessCheckVertex();
 	void shaderCompileSuccessCheckFragment();
-	void shaderLinkingSuccessCheck(int &shaderProgram);
+	void shaderLinkingSuccessCheck();
 };
 
 

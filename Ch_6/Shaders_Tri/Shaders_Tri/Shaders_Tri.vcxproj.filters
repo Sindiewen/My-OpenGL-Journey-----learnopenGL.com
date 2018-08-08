@@ -30,7 +30,7 @@
     <ClInclude Include="src\headers\sfglRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\headers\sfglShaderRenderer.h">
+    <ClInclude Include="src\headers\sfglShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="src\sfglRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\sfglShaderRenderer.cpp">
+    <ClCompile Include="src\sfglShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

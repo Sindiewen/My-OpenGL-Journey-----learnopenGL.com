@@ -4,7 +4,7 @@
 
 // Preprocessor directives
 #include "glPreprocessors.h"
-#include "sfglShaderRenderer.h"
+#include "sfglShader.h"
 
 class sfglRenderer
 {
@@ -31,7 +31,7 @@ private:
 
 
 	GLFWwindow* window; // reference to the window in the main sfgl class
-	sfglShaderRenderer shader;	// Reference to the shader class
+	sfglShader shader;	// Reference to the shader class
 
 	unsigned int VBO;	// Initializes the variable to store the current buffer
 	unsigned int VAO;	// Initializes the Vertex array object
@@ -46,6 +46,14 @@ private:
 		-0.5f, -0.5f, 0.0f, // left
 		0.5f, -0.5f, 0.0f,	// right
 		0.0f, 0.5f, 0.0f,	// top
+	};
+
+	float oneTriVertColor[18] =
+	{
+		// Verticies		// Colors
+		0.5f, -0.5f, 0.0f,	1.0f, 0.0f, 0.0f,	// Left
+		-0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,	// Right
+		0.0f, 0.5f, 0.0f,   0.0f, 0.0f, 1.0f,	// Top
 	};
 
 	float twoTriRectVert[18] =
@@ -109,7 +117,10 @@ private:
 	/////////////////////
 	// Shader variables
 	/////////////////////
-	int shaderProgram;	// creates shader program object
+	const char* vertexShaderSource =
+		"C:\Developer\C++\OpenGL\GLFW\LeanOpenGLBook\Ch_6\Shaders_Tri\Shaders_Tri\src\glsl\vertexShaderSource.vs";
+	const char* fragmentShaderSource =
+		"C:\Developer\C++\OpenGL\GLFW\LeanOpenGLBook\Ch_6\Shaders_Tri\Shaders_Tri\src\glsl\fragmentShaderSource.fs";
 	
 
 	// -------------------------------------------
@@ -117,6 +128,7 @@ private:
 
 	// Render shapes
 	void setupTriangleRender();
+	void setupTriangleRenderColorVertex();
 	void setupRectRenderer();
 
 	void renderTriangleSingle();
