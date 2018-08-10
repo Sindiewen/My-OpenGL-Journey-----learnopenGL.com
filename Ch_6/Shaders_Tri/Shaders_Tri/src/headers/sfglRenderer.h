@@ -118,9 +118,9 @@ private:
 	// Shader variables
 	/////////////////////
 	const char* vertexShaderSource =
-		"C:\Developer\C++\OpenGL\GLFW\LeanOpenGLBook\Ch_6\Shaders_Tri\Shaders_Tri\src\glsl\vertexShaderSource.vs";
+		"c:/Developer/C++/OpenGL/GLFW/LeanOpenGLBook/Ch_6/Shaders_Tri/Shaders_Tri/src/shaders/vertex.shader";
 	const char* fragmentShaderSource =
-		"C:\Developer\C++\OpenGL\GLFW\LeanOpenGLBook\Ch_6\Shaders_Tri\Shaders_Tri\src\glsl\fragmentShaderSource.fs";
+		"c:/Developer/C++/OpenGL/GLFW/LeanOpenGLBook/Ch_6/Shaders_Tri/Shaders_Tri/src/shaders/fragment.shader";
 	
 
 	// -------------------------------------------

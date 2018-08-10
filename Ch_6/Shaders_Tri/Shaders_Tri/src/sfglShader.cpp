@@ -140,6 +140,9 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 		vShaderStream << finVertex.rdbuf();
 		fShaderStream << finFrag.rdbuf();
 
+		//std::cout << vShaderStream.str() << std::endl;
+		//std::cout << fShaderStream.str() << std::endl;
+
 		// Closes file handlers
 		finVertex.close();
 		finFrag.close();
@@ -147,6 +150,9 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 		// Converts stream into string
 		vertexSource == vShaderStream.str();
 		fragmentSource == fShaderStream.str();
+
+		//std::cout << vertexSource << std::endl;
+		//std::cout << fragmentSource << std::endl;
 	}
 	catch (std::ifstream::failure e)
 	{
@@ -156,6 +162,9 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 	// Assigns the shader source code
 	vertexShaderSource = vertexSource.c_str();
 	fragmentShaderSource = fragmentSource.c_str();
+
+	std::cout << vertexShaderSource << std::endl;
+	std::cout << fragmentShaderSource << std::endl;
 }
 
 // Compiles the shader renderer
