@@ -15,7 +15,7 @@ public:
 
 	// --------------------------------------
 	// Class Functions
-	void assignShaderSource(const char* vertexPath, const char* fragPath);
+	void assignShaderSource(const std::string vertexPath, const std::string fragpath);//(const char* vertexPath, const char* fragPath);
 	void compileShaders();
 	void createShaderProgram();
 	void UseShader();

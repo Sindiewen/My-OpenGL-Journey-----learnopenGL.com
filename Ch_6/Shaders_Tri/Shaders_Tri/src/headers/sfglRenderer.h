@@ -117,10 +117,14 @@ private:
 	/////////////////////
 	// Shader variables
 	/////////////////////
-	const char* vertexShaderSource =
-		"c:/Developer/C++/OpenGL/GLFW/LeanOpenGLBook/Ch_6/Shaders_Tri/Shaders_Tri/src/shaders/vertex.shader";
-	const char* fragmentShaderSource =
-		"c:/Developer/C++/OpenGL/GLFW/LeanOpenGLBook/Ch_6/Shaders_Tri/Shaders_Tri/src/shaders/fragment.shader";
+
+	//const char* vertexShaderSource =
+		//"vertex.vert";
+	//const char* fragmentShaderSource =
+		//"fragment.frag";
+
+	const std::string vertexShaderSource = "vertex.vert";
+	const std::string fragmentShaderSource = "fragment.frag";
 	
 
 	// -------------------------------------------

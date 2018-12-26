@@ -46,8 +46,8 @@ sfglShader::sfglShader()
 		"{\n"
 		"	FragColor = ourColor;\n"
 		"}";
-	*/
 	
+	*/
 		
 }
 
@@ -115,7 +115,7 @@ void sfglShader::definesShaderUniform()
 // ----------------------------------------------
 // Start the shader renderer
 // Assigns the shader source code
-void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath)
+void sfglShader::assignShaderSource(const std::string vertexPath, const std::string fragPath)//(const char* vertexPath, const char* fragPath)
 {
 	// 1: string and fstream variables
 	std::string vertexSource;
@@ -123,13 +123,14 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 	std::ifstream finVertex;
 	std::ifstream finFrag;
 
+
 	// Ensures the fstream objects can throw exceptions
 	finVertex.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	finFrag.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 
 	// Excepion handling: Trys reading from file, catch fail
-	try
-	{
+	//try
+	//{
 		// Opens files
 		finVertex.open(vertexPath);
 		finFrag.open(fragPath);
@@ -140,8 +141,8 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 		vShaderStream << finVertex.rdbuf();
 		fShaderStream << finFrag.rdbuf();
 
-		//std::cout << vShaderStream.str() << std::endl;
-		//std::cout << fShaderStream.str() << std::endl;
+		std::cout << vShaderStream.str() << std::endl;
+		std::cout << fShaderStream.str() << std::endl;
 
 		// Closes file handlers
 		finVertex.close();
@@ -153,11 +154,11 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 
 		//std::cout << vertexSource << std::endl;
 		//std::cout << fragmentSource << std::endl;
-	}
-	catch (std::ifstream::failure e)
-	{
-		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
-	}
+	//}
+	//catch (std::ifstream::failure e)
+	//{
+		//std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
+	//}
 
 	// Assigns the shader source code
 	vertexShaderSource = vertexSource.c_str();
