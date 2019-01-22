@@ -16,7 +16,7 @@ public:
 	// --------------------------------------
 	// Class Functions
 	void assignShaderSource(const char* vertexPath, const char* fragPath);//(const std::string filePath);//;//(const char* vertexPath, const char* fragPath);
-	void compileShaders();
+	void compileShaders(const char* vertexShaderSource, const char* fragmentShaderSource);
 	void createShaderProgram();
 	void UseShader();
 
@@ -39,13 +39,6 @@ private:
 	// Private variables
 	unsigned int vertexShader;			// id reference to the created vertex shader
 	unsigned int fragmentShader;		// id reference to the created fragment shader
-
-	// Shader source code
-	const char* vertexShaderSource;		// Stores the source code for the vertex shader
-	//const std::string vertexShaderSource;
-	const char* fragmentShaderSource;	// Stores the source code for the fragment shader
-	//const std::string fragmentShaderSource;
-
 
 
 	// ----------------------------------------

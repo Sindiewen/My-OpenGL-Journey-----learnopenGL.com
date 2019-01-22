@@ -8,6 +8,6 @@ out vec3 vertexColor; // output a color to the fragment shader
 
 void main()
 {
-    gl_Position = vec4(apos, 1.0);
-    vertexColor = aColor // set ourColor to the input color we got from the vertex data
+    gl_Position = vec4(aPos, 1.0);
+    vertexColor = aColor; // set ourColor to the input color we got from the vertex data
 }

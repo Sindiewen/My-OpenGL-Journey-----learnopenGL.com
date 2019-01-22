@@ -8,6 +8,7 @@ sfglShader::sfglShader()
 	// Sets the source code for the shaders
 	// Depricated - Used for manually assigning shader source here
 
+	/*
 	/// Rainbow triangle
 	vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
@@ -92,8 +93,12 @@ sfglShader::sfglShader(const char* vertexPath, const char* fragPath)
 		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
 	}
 
-	vertexShaderSource = vertexSource.c_str();
-	fragmentShaderSource = fragmentSource.c_str();
+	const char* vertexShaderSource = vertexSource.c_str();
+	const char* fragmentShaderSource = fragmentSource.c_str();
+
+	// Compiles and creates the shaders
+	compileShaders(vertexShaderSource, fragmentShaderSource);
+	createShaderProgram();
 }
 
 // ------------------------------------------------
@@ -145,9 +150,6 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 		vShaderStream << finVertex.rdbuf();
 		fShaderStream << finFrag.rdbuf();
 
-		//std::cout << vShaderStream.str() << std::endl;
-		//std::cout << fShaderStream.str() << std::endl;
-
 		// Closes file handlers
 		finVertex.close();
 		finFrag.close();
@@ -155,9 +157,6 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 		// Converts stream into string
 		vertexSource = vShaderStream.str();
 		fragmentSource = fShaderStream.str();
-
-		//std::cout << vertexSource << std::endl;
-		//std::cout << fragmentSource << std::endl;
 	}
 	catch (std::ifstream::failure e)
 	{
@@ -165,19 +164,20 @@ void sfglShader::assignShaderSource(const char* vertexPath, const char* fragPath
 	}
 
 	// Assigns the shader source code
-	vertexShaderSource = vertexSource.c_str();
-	fragmentShaderSource = fragmentSource.c_str();
-	vertexShaderSource += '\0';
-	fragmentShaderSource += '\0';
-	
-	//std::cout << vertexShaderSource << std::endl;
-	//std::cout << fragmentShaderSource << std::endl;
-	
-	
+	// oh god... kill me... this is like tthe worst error i've ever had to deal with in my 5 yaers of programming
+	// I want to pass in the shader source code. OH SURE I'LL MAKE A CONST CHAR* AND ASSIGN BALUES TO IT LATER YEAH NO PROB
+	// OH WAIT 6 MONMTHS LATER I REALIZES HEY THAT DOESNT WORK AND I DIDNT REALIZE IT UNTILL LITTERALLY EARLIER TODAY
+	// gah that's why it wasnt working I should work on a farm
+	const char* vertexShaderSource = vertexSource.c_str();
+	const char* fragmentShaderSource = fragmentSource.c_str();
+
+	// Compiles the shaders
+	compileShaders(vertexShaderSource, fragmentShaderSource);
+	createShaderProgram();
 }
 
 // Compiles the shader renderer
-void sfglShader::compileShaders()
+void sfglShader::compileShaders(const char* vertexShaderSource, const char* fragmentShaderSource)
 {
 	// Compiles the Vertex Shader
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);			// Tells shader program to create a vertex shader

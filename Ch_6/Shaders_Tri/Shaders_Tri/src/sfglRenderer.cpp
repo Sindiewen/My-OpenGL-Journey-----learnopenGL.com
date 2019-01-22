@@ -26,9 +26,7 @@ void sfglRenderer::setWindow(GLFWwindow* newwindow)
 void sfglRenderer::initiateRenderer()
 {
 	// TODO: Add shader stuff here
-	//shader.assignShaderSource(vertexShaderPath, fragmentShaderPath);
-	shader.compileShaders();
-	shader.createShaderProgram();
+	shader.assignShaderSource(vertexShaderPath, fragmentShaderPath);
 
 	// Updates the renderer
 	glUpdate();
