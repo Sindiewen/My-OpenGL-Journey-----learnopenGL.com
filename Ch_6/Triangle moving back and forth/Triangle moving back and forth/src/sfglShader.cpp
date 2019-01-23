@@ -5,52 +5,6 @@
 sfglShader::sfglShader()
 {
 	// default constructor
-	// Sets the source code for the shaders
-	// Depricated - Used for manually assigning shader source here
-
-	/*
-	/// Rainbow triangle
-	vertexShaderSource = "#version 330 core\n"
-		"layout (location = 0) in vec3 aPos;\n"
-		"layout (location = 1) in vec3 aColor;\n"
-		"out vec3 vertexColor;\n"	// Sets vertex color variable variable going out to fragment
-		"void main()\n"
-		"{\n"
-			// Setting a vector3 into the vector4's constructor. Needs 1 more parameter though as it is a vector4
-			"gl_Position = vec4(aPos, 1.0);\n"
-		
-			// Setting vertexColor to aColor
-			"vertexColor = aColor;\n"
-
-			// Setting the output color for the shader
-			//"vertexColor = vec4(0.5, 0.0, 0.0, 1.0)\n;"
-		"}";
-
-	//Fragment shader - Getting vertex color from vertex shader source
-	fragmentShaderSource = "#version 330 core\n"
-		"out vec3 FragColor;\n"		// Defines the output color to the vertex
-			
-		"in vec3 vertexColor;\n"	// Takes in the vertexColor variable from the vertexShader - has same variable name
-
-		"void main()\n"
-		"{\n"
-		"	FragColor = vertexColor;\n"	// Recives the passed in vertexColor
-		"}";
-		
-
-	// Fragment SHader using Uniforms
-	/*
-	fragmentShaderSource = "#version 330 core\n"
-		"out vec4 FragColor;\n"
-		"uniform vec4 ourColor;\n"	// Global: set in the openGL code
-		"void main()\n"
-		"{\n"
-		"	FragColor = ourColor;\n"
-		"}";
-		*/
-	
-	
-		
 }
 
 // Passing in shader source files
@@ -106,6 +60,7 @@ sfglShader::sfglShader(const char* vertexPath, const char* fragPath)
 
 void sfglShader::definesShaderUniform()
 {
+	/*
 	// ------------------------------------------------------
 	// sin color change 
 
@@ -117,6 +72,18 @@ void sfglShader::definesShaderUniform()
 	glUniform4f(vertexColorLocation ,0.0f, greenValue, 0.0f, 1.0f);
 	//std::cout << "Current Time Value: " << timeValue << std::endl;
 	//std::cout << "Current Green Value: " << greenValue << std::endl;
+	*/
+
+	// Causes the triangle to just move around the window
+	int xyzShiftLocation = glGetUniformLocation(ShaderProgram, "horiShift");
+	int scaleShiftLocation = glGetUniformLocation(ShaderProgram, "scaleShift");
+	float timeValue = glfwGetTime();
+	float horiShift = sin(timeValue + 2.0f) * 0.5f;
+	float vertiShift = sin(timeValue * 3) - 0.2f;
+	float scaleShift = sin(timeValue * 2) + 1.7f;
+
+	glUniform3f(xyzShiftLocation, horiShift, vertiShift, 0.0f);
+	glUniform1f(scaleShiftLocation, scaleShift);
 }
 
 // ----------------------------------------------

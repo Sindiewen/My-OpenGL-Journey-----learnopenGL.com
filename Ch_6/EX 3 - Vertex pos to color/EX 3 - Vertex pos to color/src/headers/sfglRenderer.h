@@ -120,13 +120,13 @@ private:
 
 	// Relative to the executable directory
 	// For building and running executables from it's directory
-	const char* vertexShaderPath = "shader.vs";
-	const char* fragmentShaderPath = "shader.fs";
+	//const char* vertexShaderPath = "shader.vs";
+	//const char* fragmentShaderPath = "shader.fs";
 
 	// For debugging - relative to the project directory where the *.vcsproj file is location
 	// For running the project from the debugger
-	//const char* vertexShaderPath = "src/shaders/shader.vs";		
-	//const char* fragmentShaderPath = "src/shaders/shader.fs";
+	const char* vertexShaderPath = "src/shaders/shader.vs";		
+	const char* fragmentShaderPath = "src/shaders/shader.fs";
 	
 
 	// -------------------------------------------
