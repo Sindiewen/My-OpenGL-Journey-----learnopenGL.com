@@ -1,1 +1,0 @@
-- Create the same 2 triangles using two different VAO's and VBO's for their data.

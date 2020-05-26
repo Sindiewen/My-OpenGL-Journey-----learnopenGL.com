@@ -1,1 +1,0 @@
-- Draw 2 Triangles next to each other using glDrawArrays by adding more vertices to your data.
